@@ -51,11 +51,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'siteino.urls'
-
+import os # os.path.join(BASE_DIR,"templates")
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
