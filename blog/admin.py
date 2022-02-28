@@ -10,4 +10,6 @@ class PostAdmin(admin.ModelAdmin):
                     'updated_date')
     list_filter = ('status',)
     search_fields = ('title','content',)
+    # ordering = ["-created_date"]
+    
 admin.site.register(Post,PostAdmin)
