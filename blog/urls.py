@@ -3,6 +3,6 @@ from blog.views import index_blog,single_blog
 app_name = "blog"
 urlpatterns = [
     path('', index_blog, name="index"),
-    path('single/', single_blog, name="single"),
+    path('single/<int:id>', single_blog, name="single"),
 
 ]
