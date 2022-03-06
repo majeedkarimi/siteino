@@ -20,6 +20,8 @@ def counter_views(id):
     
 def single_blog(request,id):
     counter_views(id)
-    posts=get_object_or_404(Post,pk=id)
+    posts = Post.objects.filter(status=1)
+    posts = posts.filter(published_date__lte=datetime.datetime.now())
+    posts = get_object_or_404(posts, pk=id)
     content = {'posts':posts}
     return render(request, 'blog/blog-single.html',content)
