@@ -1,25 +1,25 @@
 from django.shortcuts import get_object_or_404, render
 from blog.models import Post
 import datetime
+from django.db.models.functions import Now
 # Create your views here.
 
 
 def index_blog(request):
     posts = Post.objects.filter(status=1)
-    current_datetime = datetime.datetime.now()
-    posts = posts.filter(published_date__lte=current_datetime)
+    # current_datetime = datetime.datetime.now()
+    # posts = posts.filter(published_date__lte=current_datetime)
+    posts = posts.filter(published_date__lte=Now())
     posts = posts.order_by('published_date')
     content = {'posts':posts,}
     return render(request, 'blog/blog-home.html',content)
 
 
-def counter_views(id):
-    update_views = Post.objects.get(pk=id)
-    update_views.counted_views = update_views.counted_views+1
-    update_views.save()
     
 def single_blog(request,id):
-    counter_views(id)
+    update_views = Post.objects.get(pk=id)
+    update_views.counted_views += 1
+    update_views.save()
     posts = Post.objects.filter(status=1)
     posts = posts.filter(published_date__lte=datetime.datetime.now())
     posts = get_object_or_404(posts, pk=id)
@@ -27,6 +27,7 @@ def single_blog(request,id):
     
     view_post = Post.objects.filter(status=1)
     current_datetime = datetime.datetime.now()
+    print(current_datetime)
     view_post = view_post.filter(published_date__lte=current_datetime)
     view_post = view_post.order_by('published_date')
     list_view_post = list(view_post)
