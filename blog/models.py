@@ -27,3 +27,5 @@ class Post(models.Model):
     class Meta:
         ordering =['-created_date']
 
+    # def truncate_string(self):
+    #     return self.content[:100]+" ... "
