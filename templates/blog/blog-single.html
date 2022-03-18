@@ -33,7 +33,7 @@
 								<div class="col-lg-3  col-md-3 meta-details">
 									<ul class="tags">
 										{% for post in posts.category.all %}
-										<li><a href="#">{{ post.name }}
+										<li><a href={% url 'blog:category' cat_name=post.name %}>{{ post.name }}
 											{% if not forloop.last %},{% endif %} </a></li>
 										{% endfor %}
 									</ul>

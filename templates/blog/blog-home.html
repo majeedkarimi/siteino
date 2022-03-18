@@ -97,7 +97,7 @@
 										{% endfor %} -->
 										<!-- OR -->
 										{% for cat in post.category.all %}
-											<li><a href="#">{{ cat.name }}
+											<li><a href={% url 'blog:category' cat_name=cat.name %}>{{ cat.name }}
 											{%if not forloop.last%},{%endif%}</a></li>
 										{% endfor %}
 									</ul>

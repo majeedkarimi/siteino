@@ -5,13 +5,17 @@ from django.db.models.functions import Now
 # Create your views here.
 
 
-def index_blog(request):
+def index_blog(request,cat_name=None):
     posts = Post.objects.filter(status=1)
     # current_datetime = datetime.datetime.now()
     # posts = posts.filter(published_date__lte=current_datetime)
     posts = posts.filter(published_date__lte=Now())
     posts = posts.order_by('published_date')
-    content = {'posts':posts,}
+    if cat_name == None:
+        content = {'posts':posts,}
+    else:
+        posts = posts.filter(category__name=cat_name)
+        content = {'posts':posts,}
     return render(request, 'blog/blog-home.html',content)
 
 
