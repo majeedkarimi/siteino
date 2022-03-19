@@ -1,5 +1,5 @@
 from django import template
-
+from django.contrib.auth.models import User
 register = template.Library()
 
 from blog.models import Post,Category
@@ -14,3 +14,8 @@ def latest_posts(args):
 def postcategories():
     categories = Category.objects.filter(post__status=1).annotate(Count("post"))
     return {"categories":categories}
+
+@register.inclusion_tag('blog/blog_athor.html')
+def authors():
+    authors = User.objects.all()
+    return {"authors":authors}

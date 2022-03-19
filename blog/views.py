@@ -5,19 +5,31 @@ from django.db.models.functions import Now
 # Create your views here.
 
 
-def index_blog(request,cat_name=None):
+# def index_blog(request,cat_name=None,author_username=None):
+#     posts = Post.objects.filter(status=1)
+#     # current_datetime = datetime.datetime.now()
+#     # posts = posts.filter(published_date__lte=current_datetime)
+#     posts = posts.filter(published_date__lte=Now())
+#     posts = posts.order_by('published_date')
+#     if cat_name != None:
+#         posts = posts.filter(category__name=cat_name)
+#     if author_username != None:
+#         posts = posts.filter(author__username=author_username)
+#     content={'posts':posts}
+#     return render(request, 'blog/blog-home.html',content)
+
+def index_blog(request,**kwargs):
     posts = Post.objects.filter(status=1)
     # current_datetime = datetime.datetime.now()
     # posts = posts.filter(published_date__lte=current_datetime)
     posts = posts.filter(published_date__lte=Now())
     posts = posts.order_by('published_date')
-    if cat_name == None:
-        content = {'posts':posts,}
-    else:
-        posts = posts.filter(category__name=cat_name)
-        content = {'posts':posts,}
+    if kwargs.get('cat_name') != None:
+        posts = posts.filter(category__name=kwargs.get('cat_name'))
+    if kwargs.get('author_username') != None:
+        posts = posts.filter(author__username=kwargs.get('author_username'))
+    content={'posts':posts}
     return render(request, 'blog/blog-home.html',content)
-
 
     
 def single_blog(request,id):
