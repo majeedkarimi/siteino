@@ -72,3 +72,12 @@ def single_blog(request,id):
 
     content = {'posts':posts,'next':next_post,'prev':prev_post}
     return render(request, 'blog/blog-single.html',content)
+
+def search_blog(request):
+    posts = Post.objects.filter(status=1)
+    posts = posts.filter(published_date__lte=Now())
+    posts = posts.order_by('published_date')
+    if s := request.GET.get('s'): #walrus oprator
+        posts=posts.filter(content__contains=s)
+    content={'posts':posts}
+    return render(request, 'blog/blog-home.html',content)
