@@ -23,7 +23,7 @@ def index_blog(request,**kwargs):
     # current_datetime = datetime.datetime.now()
     # posts = posts.filter(published_date__lte=current_datetime)
     posts = posts.filter(published_date__lte=Now())
-    posts = posts.order_by('published_date')
+    posts = posts.order_by('-published_date')
     if kwargs.get('cat_name') != None:
         posts = posts.filter(category__name=kwargs.get('cat_name'))
     if kwargs.get('author_username') != None:
@@ -45,7 +45,7 @@ def single_blog(request,id):
     current_datetime = datetime.datetime.now()
     print(current_datetime)
     view_post = view_post.filter(published_date__lte=current_datetime)
-    view_post = view_post.order_by('published_date')
+    view_post = view_post.order_by('-published_date')
     list_view_post = list(view_post)
     post_count = len(list_view_post)
     post_index = list_view_post.index(Post.objects.get(pk=id))

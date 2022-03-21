@@ -25,7 +25,7 @@ class Post(models.Model):
         return f"({self.id}) {self.title}"
     
     class Meta:
-        ordering =['-created_date']
+        ordering =['-published_date']
 
     # def truncate_string(self):
     #     return self.content[:100]+" ... "
