@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from blog.models import Post
 import datetime
 from django.db.models.functions import Now
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 # Create your views here.
 
 
@@ -28,6 +29,14 @@ def index_blog(request,**kwargs):
         posts = posts.filter(category__name=kwargs.get('cat_name'))
     if kwargs.get('author_username') != None:
         posts = posts.filter(author__username=kwargs.get('author_username'))
+    paginator = Paginator(posts,3)
+    try:
+        number_page = request.GET.get('page')
+        posts = paginator.page(number_page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
     content={'posts':posts}
     return render(request, 'blog/blog-home.html',content)
 
