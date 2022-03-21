@@ -3655,8 +3655,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .widget-wrap .popular-post-widget .popular-post-list .thumb img {
-  width: 100%;
-  max-width: 100px;
+  width: 120px;
+  height: 60px;
+  max-width: 120px;
+  
 }
 
 .widget-wrap .popular-post-widget .single-post-list {
@@ -3904,6 +3906,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .single-post-area .navigation-area .nav-left .thumb img {
+  width: 120px;
+  height: 60px;
+  max-width: 120px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -3943,6 +3948,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .single-post-area .navigation-area .nav-right .thumb img {
+  width: 120px;
+  height: 60px;
+  max-width: 120px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;

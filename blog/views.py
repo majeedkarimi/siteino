@@ -52,7 +52,6 @@ def single_blog(request,id):
     
     view_post = Post.objects.filter(status=1)
     current_datetime = datetime.datetime.now()
-    print(current_datetime)
     view_post = view_post.filter(published_date__lte=current_datetime)
     view_post = view_post.order_by('-published_date')
     list_view_post = list(view_post)
