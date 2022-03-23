@@ -3,6 +3,7 @@ from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 from blog.models import Post
 from django.db.models.functions import Now
 from website.forms import ContactModelForm,NewsletterModelForm
+from django.contrib import messages
 
 def index_view(request):
     posts = Post.objects.filter(status=1)
@@ -21,6 +22,10 @@ def contact_view(request):
         form = ContactModelForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'your email submited successfully')
+            # messages.add_message(request.SUCCESS,'your email submited successfully')
+        else:
+            messages.error(request,'your message didnt submited')
         
     return render(request,'website/contact.html')
 
