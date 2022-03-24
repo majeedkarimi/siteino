@@ -4,6 +4,7 @@ from blog.models import Post
 from django.db.models.functions import Now
 from website.forms import ContactModelForm,NewsletterModelForm
 from django.contrib import messages
+from django.urls import reverse
 
 def index_view(request):
     posts = Post.objects.filter(status=1)
@@ -20,13 +21,18 @@ def about_view(request):
 def contact_view(request):
     if request.method == 'POST':
         form = ContactModelForm(request.POST)
+        # print(form['name'].value())
         if form.is_valid():
-            form.save()
+            # print(form.cleaned_data.get('name'))
+            post = form.save(commit=False)
+            post.name = 'Anonymous'
+            post.save()
             messages.success(request,'your email submited successfully')
             # messages.add_message(request.SUCCESS,'your email submited successfully')
+            return HttpResponseRedirect(reverse('website:contact'))
         else:
             messages.error(request,'your message didnt submited')
-        
+
     return render(request,'website/contact.html')
 
 def newsletter_view(request):

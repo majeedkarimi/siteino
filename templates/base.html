@@ -16,9 +16,9 @@
 		<meta charset="UTF-8">
 		<!-- Site Title -->
 		<title>Travel</title>
-
+		
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-			<!--
+		<!--
 			CSS
 			============================================= -->
 			<link rel="stylesheet" href="{% static "css/linearicons.css" %}">
@@ -35,13 +35,13 @@
 			<header id="header">
 				<div class="header-top">
 					<div class="container">
-			  		<div class="row align-items-center">
-			  			<div class="col-lg-6 col-sm-6 col-6 header-top-left">
-			  				<ul>
+						<div class="row align-items-center">
+							<div class="col-lg-6 col-sm-6 col-6 header-top-left">
+								<ul>
 			  					<li><a href="#">Visit Us</a></li>
 			  					<li><a href="#">Buy Tickets</a></li>
 			  				</ul>
-			  			</div>
+						</div>
 			  			<div class="col-lg-6 col-sm-6 col-6 header-top-right">
 							<div class="header-social">
 								<a href="#"><i class="fa fa-facebook"></i></a>
@@ -50,37 +50,38 @@
 								<a href="#"><i class="fa fa-behance"></i></a>
 							</div>
 			  			</div>
-			  		</div>
 					</div>
 				</div>
-				<div class="container main-menu">
-					<div class="row align-items-center justify-content-between d-flex">
-				      <div id="logo">
-				        <a href="index.html"><img src="{% static "img/logo.png" %}" alt="" title="" /></a>
-				      </div>
-				      <nav id="nav-menu-container">
-				        <ul class="nav-menu">
-				          <li><a href="{% url "website:index" %}">Home</a></li>
-						  <li><a href="{% url "website:about" %}">About</a></li>
-						  <li><a href="{% url "blog:index" %}">Blog</a></li>
-				          <li><a href="{%  url "website:contact" %}">Contact</a></li>
+			</div>
+			<div class="container main-menu">
+				<div class="row align-items-center justify-content-between d-flex">
+					<div id="logo">
+						<a href="index.html"><img src="{% static "img/logo.png" %}" alt="" title="" /></a>
+					</div>
+					<nav id="nav-menu-container">
+						<ul class="nav-menu">
+							<li><a href="{% url "website:index" %}">Home</a></li>
+							<li><a href="{% url "website:about" %}">About</a></li>
+							<li><a href="{% url "blog:index" %}">Blog</a></li>
+							<li><a href="{%  url "website:contact" %}">Contact</a></li>
 				        </ul>
-				      </nav><!-- #nav-menu-container -->
-					</div>
+					</nav><!-- #nav-menu-container -->
 				</div>
-			</header><!-- #header -->
-
-
-
-        {% block content %}
-
+			</div>
+		</header><!-- #header -->
+		
+			
+		{% block content %}
+		
+		
         {% endblock %}
-
-
-			<!-- start footer Area -->
+		
+		
+		{% include 'message.html' %}
+		<!-- start footer Area -->
 			<footer class="footer-area section-gap">
 				<div class="container">
-
+					
 					<div class="row">
 						<div class="col-lg-3  col-md-6 col-sm-6">
 							<div class="single-footer-widget">
