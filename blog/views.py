@@ -29,6 +29,8 @@ def index_blog(request,**kwargs):
         posts = posts.filter(category__name=kwargs.get('cat_name'))
     if kwargs.get('author_username') != None:
         posts = posts.filter(author__username=kwargs.get('author_username'))
+    if kwargs.get('tag_name') != None:
+        posts = posts.filter(tag__name__in=[kwargs.get('tag_name')])
     paginator = Paginator(posts,3)
     try:
         number_page = request.GET.get('page')

@@ -27,7 +27,7 @@ def contact_view(request):
             post = form.save(commit=False)
             post.name = 'Anonymous'
             post.save()
-            messages.success(request,'your email submited successfully')
+            messages.success(request,'your message submited successfully')
             # messages.add_message(request.SUCCESS,'your email submited successfully')
             return HttpResponseRedirect(reverse('website:contact'))
         else:
@@ -40,7 +40,10 @@ def newsletter_view(request):
         form = NewsletterModelForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,'your email submited successfully')
             return HttpResponseRedirect('/')
+        else:
+            messages.error(request,'your email didnt submited')
     else:
         return HttpResponseRedirect('/')
 
