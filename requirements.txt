@@ -1,6 +1,17 @@
 Django>=3.2,<3.3
 asgiref
+bleach
+django-debug-toolbar
 django-extensions
+django-ranged-response
+django-robots
+django-simple-captcha
+django-summernote
+django-taggit
+packaging
 Pillow
+pyparsing
 pytz
+six
 sqlparse
+webencodings

@@ -5,6 +5,8 @@ from django.db.models.functions import Now
 from website.forms import ContactModelForm,NewsletterModelForm
 from django.contrib import messages
 from django.urls import reverse
+from website.forms import ContactModelForm
+
 
 def index_view(request):
     posts = Post.objects.filter(status=1)
@@ -19,6 +21,8 @@ def about_view(request):
 
 
 def contact_view(request):
+    form=ContactModelForm()
+    content={'form':form}
     if request.method == 'POST':
         form = ContactModelForm(request.POST)
         # print(form['name'].value())
@@ -33,7 +37,7 @@ def contact_view(request):
         else:
             messages.error(request,'your message didnt submited')
 
-    return render(request,'website/contact.html')
+    return render(request,'website/contact.html',content)
 
 def newsletter_view(request):
     if request.method == 'POST':
