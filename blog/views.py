@@ -51,6 +51,7 @@ def single_blog(request,id):
     posts = posts.filter(published_date__lte=datetime.datetime.now())
     posts = get_object_or_404(posts, pk=id)
     
+    comments = Comment.objects.filter(post=id,approved=True)
     
     view_post = Post.objects.filter(status=1)
     current_datetime = datetime.datetime.now()
@@ -80,7 +81,7 @@ def single_blog(request,id):
             prev_post = list_view_post[post_index-1]
             next_post = list_view_post[post_index+1]
 
-    content = {'posts':posts,'next':next_post,'prev':prev_post}
+    content = {'posts':posts,'comments':comments,'next':next_post,'prev':prev_post}
     return render(request, 'blog/blog-single.html',content)
 
 def search_blog(request):

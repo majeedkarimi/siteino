@@ -1,5 +1,6 @@
 from django import template
 from django.contrib.auth.models import User
+from blog.models import Comment
 register = template.Library()
 
 from blog.models import Post,Category
@@ -19,3 +20,7 @@ def postcategories():
 def authors():
     authors = User.objects.all()
     return {"authors":authors}
+
+@register.simple_tag(name='comments_count')
+def function(id):
+    return Comment.objects.filter(post=id,approved=True).count()
