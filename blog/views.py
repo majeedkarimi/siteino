@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render
-from blog.models import Post
+from blog.models import Post,Comment
 import datetime
 from django.db.models.functions import Now
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
