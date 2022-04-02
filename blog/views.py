@@ -3,6 +3,8 @@ from blog.models import Post,Comment
 import datetime
 from django.db.models.functions import Now
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from blog.forms import CommentModelForm
+from django.contrib import messages
 # Create your views here.
 
 
@@ -80,8 +82,18 @@ def single_blog(request,id):
         elif post_index>0 and post_index<post_count-1:
             prev_post = list_view_post[post_index-1]
             next_post = list_view_post[post_index+1]
-
-    content = {'posts':posts,'comments':comments,'next':next_post,'prev':prev_post}
+    if request.method=="POST":
+        form = CommentModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'The comment was successfully submitted')
+        else:
+            messages.error(request,'There was a problem registering the comment')
+    
+    form_comment=CommentModelForm()
+            
+            
+    content = {'posts':posts,'comments':comments,'next':next_post,'prev':prev_post,'form':form_comment}
     return render(request, 'blog/blog-single.html',content)
 
 def search_blog(request):
