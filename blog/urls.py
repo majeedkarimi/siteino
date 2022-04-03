@@ -1,6 +1,7 @@
 from unicodedata import name
 from django.urls import path,include
 from blog.views import index_blog,single_blog,search_blog
+from blog.feeds import LatestEntriesFeed
 app_name = "blog"
 urlpatterns = [
     path('', index_blog, name="index"),
@@ -9,5 +10,7 @@ urlpatterns = [
     path('authors/<str:author_username>',index_blog,name='author'),
     path('tag/<str:tag_name>',index_blog,name='tag'),
     path('search',search_blog,name='search'),
+    path('rss/feed/', LatestEntriesFeed()),
+    
 
 ]
