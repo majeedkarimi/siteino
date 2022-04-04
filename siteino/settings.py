@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "taggit",
     'django_summernote',
     'captcha',
+    'accounts.apps.AccountsConfig',
 ]
 
 # sites framework

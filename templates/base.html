@@ -38,10 +38,15 @@
 						<div class="row align-items-center">
 							<div class="col-lg-6 col-sm-6 col-6 header-top-left">
 								<ul>
-			  					<li><a href="#">Visit Us</a></li>
-			  					<li><a href="#">Buy Tickets</a></li>
-			  				</ul>
-						</div>
+									{% if request.user.is_authenticated %}
+										<li><a href="#">Logged in as {{request.user.username}}</a></li>
+										<li><a href="#">Log out</a></li>
+									{% else %}
+										<li><a href="{% url 'account:login' %}">Login</a></li>
+										<li><a href="{% url 'account:signup' %}">Signup</a></li>
+									{% endif %}
+								</ul>
+							</div>
 			  			<div class="col-lg-6 col-sm-6 col-6 header-top-right">
 							<div class="header-social">
 								<a href="#"><i class="fa fa-facebook"></i></a>
