@@ -1,27 +1,29 @@
 from django.shortcuts import render,redirect
-from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
 # login by html login form.
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect('/')
-    if request.method == 'GET':
+        return redirect('/contact')
+    elif request.method == 'GET':
         return render(request,'accounts/login.html')
-    if request.method == 'POST':
+    elif request.method == 'POST':
         form = AuthenticationForm(request=request,data=request.POST)
         if form.is_valid():
             username=form.cleaned_data.get('username')
             password=form.cleaned_data.get('password')
+            next= request.POST.get('next')
+            print(next)
             user=authenticate(request, username=username, password=password)
-            if user is not None: 
+            if user is not None and next is None: 
                 login(request, user)
-                return redirect('/')
-            else:
-                
-                print('user not found')
+                return redirect('/about')
+            elif user is not None and next is not None:
+                login(request, user)
+                return redirect(next)
         else:
             return render(request,'accounts/login.html')
 
@@ -66,5 +68,7 @@ def signup_view(request):
         return render(request,'accounts/signup.html')
     else:
         return redirect('/')
+
+
 
 

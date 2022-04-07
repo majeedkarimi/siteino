@@ -1,10 +1,11 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render,redirect
 from blog.models import Post,Comment
 import datetime
 from django.db.models.functions import Now
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from blog.forms import CommentModelForm
 from django.contrib import messages
+
 # Create your views here.
 
 
@@ -91,10 +92,17 @@ def single_blog(request,id):
             messages.error(request,'There was a problem registering the comment')
     
     form_comment=CommentModelForm()
-            
-            
+    
+    next = request.GET.get('next')
+    print(next)
     content = {'posts':posts,'comments':comments,'next':next_post,'prev':prev_post,'form':form_comment}
-    return render(request, 'blog/blog-single.html',content)
+    if not posts.login_require:   
+        return render(request, 'blog/blog-single.html',content)
+    else :
+        if request.user.is_authenticated:
+            return render(request, 'blog/blog-single.html',content)
+        else:
+            return redirect(f'/accounts/login/?next={next}')
 
 def search_blog(request):
     posts = Post.objects.filter(status=1)

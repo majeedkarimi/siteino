@@ -7,7 +7,7 @@ class PostAdmin(SummernoteModelAdmin):
     date_hierarchy = 'created_date'
     empty_value_display = '-empty-'
     # fields = ('title','content','counted_views','status')
-    list_display = ('title','author','pk','status','created_date',
+    list_display = ('title','author','pk','status','login_require','created_date',
                     'updated_date','published_date')
     list_filter = ('status','author')
     search_fields = ('title','content',)
