@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+
 <section class="relative about-banner">
   <div class="container">
 			<div class="row justify-content-sm-center h-100">
@@ -44,28 +45,46 @@
                               <input type="checkbox" name="remember" id="remember" class="form-check-input" value="True">
 										          <label for="remember" class="form-check-label">Remember Me</label>
                             </div>
-                            
                           </div>
+
+								{% if form.errors %}
+								<div class="alert alert-error">
+								<h4>Please fix the following errors</h4>
+								<ul>
+									{% for field in form %}
+									{% if field.errors %}
+										{% for error in field.errors %}
+										<li><a href="#id_{{ field.name }}" class="error">{{ error|escape }}</a></li>
+										{% endfor %}
+									{% endif %}
+									{% endfor %}
+								</ul>
+								{% if form.non_field_errors %}
+									{{ form.non_field_errors }}
+								{% endif %}
+								</div>
+								{% endif %}
+
+
                           <div class="col-md-12 text-center">
                             <button type="submit" class="align-items-end btn btn-primary"   >
                               Login
                             </button>
-                          </div>
-                    </form>
-                  </div>
-						<div class="card-footer py-3 border-0">
-							<div class="text-center">
-								Don't have an account? <a href="{% url 'accounts:signup' %}" class="text-dark">Create One</a>
-							</div>
 						</div>
-					</div>
-					<div class="text-center mt-5 text-muted">
-            <br><br>
+                    </form>
+				</div>
+				<div class="card-footer py-3 border-0">
+					<div class="text-center">
+						Don't have an account? <a href="{% url 'accounts:signup' %}" class="text-dark">Create One</a>
 					</div>
 				</div>
 			</div>
+			<div class="text-center mt-5 text-muted">
+            <br><br>
 		</div>
-	</section>
-
+	</div>
+</div>
+</div>
+</section>
 	<script src="{% static "login/js/login.js" %}"></script>
 {% endblock %}

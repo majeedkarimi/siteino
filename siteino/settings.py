@@ -226,3 +226,4 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 # AUTHENTICATION_BACKENDS = ['accounts.views.EmailOrUsernameModelBackend']
+

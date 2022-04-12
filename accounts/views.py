@@ -3,8 +3,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.contrib.auth.decorators import login_required
-from accounts.models import SignupForm
-   
+from accounts.forms import SignupForm,UserLoginForm
+from django.contrib import messages
+
+
 # # login by html login form.
 # def login_view(request):
 #     if request.user.is_authenticated:
@@ -96,15 +98,19 @@ def login_view(request):
             login(request, user)
             if not remember_me:
                 request.session.set_expiry(0) 
+            messages.success(request,'Welcome, Youre successfully signed into Travel' )
             return redirect('/')
         elif user is not None and next!='':
             login(request, user)
             if not remember_me:
                 request.session.set_expiry(0) 
-            return redirect('/')
+            messages.success(request,'Welcome, Youre successfully signed into Travel' )
             return redirect(next)
         else:
-            return render(request,'accounts/login.html')
+            messages.error(request,'Login failed, username or password wrong')
+            form=UserLoginForm(request.POST)
+            content={"form":form}
+            return render(request,'accounts/login.html',content) 
 
 
 # login by django auth forms
@@ -155,7 +161,13 @@ def signup_view(request):
             form=SignupForm(request.POST)
             if form.is_valid():
                 form.save()
+                messages.success(request,'Your registration was successful')
                 return redirect('/accounts/login')
+            elif not form.is_valid():
+                messages.error(request,'registration failed')
+                form=SignupForm(request.POST)
+                content={"form":form}
+                return render(request,'accounts/signup.html',content)
         return render(request,'accounts/signup.html')
     else:
         return redirect('/')
