@@ -1,8 +1,9 @@
-Django>=3.2,<3.3
+Django>3.2,<3.3
 asgiref
 bleach
 django-debug-toolbar
 django-extensions
+django-multi-captcha-admin
 django-ranged-response
 django-robots
 django-simple-captcha
