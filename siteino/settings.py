@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'captcha',
     'accounts.apps.AccountsConfig',
+    'crispy_forms',
 ]
 
 # sites framework
@@ -227,3 +228,4 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 # AUTHENTICATION_BACKENDS = ['accounts.views.EmailOrUsernameModelBackend']
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
