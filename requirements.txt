@@ -1,6 +1,7 @@
 Django>3.2,<3.3
 asgiref
 bleach
+django-crispy-forms
 django-debug-toolbar
 django-extensions
 django-multi-captcha-admin
