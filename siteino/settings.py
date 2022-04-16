@@ -20,17 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+*(s!6)def82)r28p96ejp^n!lrkl+a=89e)_qvl=&7!ybsf=h'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
 # Application definition
-
 INSTALLED_APPS = [
     'multi_captcha_admin',
     'django.contrib.admin',
@@ -54,16 +44,12 @@ INSTALLED_APPS = [
     'crispy_forms',
 ]
 
-# sites framework
-SITE_ID = 2
 
 # robots
 ROBOTS_USE_HOST = True
 ROBOTS_USE_SITEMAP = True
 
-# summernote configs
-X_FRAME_OPTIONS = 'SAMEORIGIN'
-SUMMERNOTE_THEME = 'bs4'
+
 
 SUMMERNOTE_CONFIG = {
     # Using SummernoteWidget - iframe mode, default
@@ -148,15 +134,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'siteino.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
@@ -196,14 +173,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / "static_cdn" / "static_root"
-
-STATICFILES_DIRS = [
-    BASE_DIR / "assets",
-]
-
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "static_cdn" / "media_root"
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
