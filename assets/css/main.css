@@ -48,6 +48,8 @@ $black			: #222;
 /* =================================== */
 /*  Basic Style 
 /* =================================== */
+
+
 ::-moz-selection {
   /* Code for Firefox */
   background-color: #f8b600;
@@ -2483,7 +2485,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /*-------- Start Banner Area ------------*/
 .banner-area {
-  background: url(../img/hero-bg.jpg) center;
+  background: url(/static/img/hero-bg.jpg) center;
   background-size: cover;
 }
 

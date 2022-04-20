@@ -48,6 +48,8 @@ $black			: #222;
 /* =================================== */
 /*  Basic Style 
 /* =================================== */
+
+
 ::-moz-selection {
   /* Code for Firefox */
   background-color: #f8b600;
@@ -2483,7 +2485,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /*-------- Start Banner Area ------------*/
 .banner-area {
-  background: url(../img/hero-bg.jpg) center;
+  background: url(/static/img/hero-bg.jpg) center;
   background-size: cover;
 }
 
@@ -3655,8 +3657,10 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .widget-wrap .popular-post-widget .popular-post-list .thumb img {
-  width: 100%;
-  max-width: 100px;
+  width: 120px;
+  height: 60px;
+  max-width: 120px;
+  
 }
 
 .widget-wrap .popular-post-widget .single-post-list {
@@ -3904,6 +3908,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .single-post-area .navigation-area .nav-left .thumb img {
+  width: 120px;
+  height: 60px;
+  max-width: 120px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -3943,6 +3950,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .single-post-area .navigation-area .nav-right .thumb img {
+  width: 120px;
+  height: 60px;
+  max-width: 120px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
