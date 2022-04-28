@@ -36,12 +36,12 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'robots',
-    "debug_toolbar",
     "taggit",
     'django_summernote',
     'captcha',
     'accounts.apps.AccountsConfig',
     'crispy_forms',
+    'comingsoon.apps.ComingsoonConfig',
 ]
 
 

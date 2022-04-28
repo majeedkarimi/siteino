@@ -6,7 +6,7 @@ SECRET_KEY = 'django-insecure-+*(s!6)def82)r28p96ejp^n!lrkl+a=89e)_qvl=&7!ybsf=h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # INSTALLED_APPS = []
 
@@ -28,7 +28,9 @@ DATABASES = {
     }
 }
 
-
+STATICFILES_DIRS = [
+    BASE_DIR / "assets",
+]
 STATIC_ROOT = BASE_DIR / "static_cdn" / "static_root"
 MEDIA_ROOT = BASE_DIR / "static_cdn" / "media_root"
 
