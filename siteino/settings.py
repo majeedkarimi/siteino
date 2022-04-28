@@ -36,12 +36,17 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'robots',
+    "debug_toolbar",
     "taggit",
     'django_summernote',
     'captcha',
     'accounts.apps.AccountsConfig',
     'crispy_forms',
+<<<<<<< HEAD
     'comingsoon.apps.ComingsoonConfig',
+    'ads_txt',
+=======
+>>>>>>> parent of 21472e6 (adding coming soon page)
 ]
 
 

@@ -6,9 +6,9 @@ SECRET_KEY = 'django-insecure-+*(s!6)def82)r28p96ejp^n!lrkl+a=89e)_qvl=&7!ybsf=h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
 
-INSTALLED_APPS += [ "debug_toolbar", ]
+# INSTALLED_APPS = []
 
 # sites framework
 SITE_ID = 2

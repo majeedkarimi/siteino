@@ -1,13 +1,16 @@
 Django>3.2,<3.3
 asgiref
 bleach
+django-ads-txt
 django-crispy-forms
 django-debug-toolbar
 django-extensions
 django-multi-captcha-admin
+django-nocaptcha-recaptcha
 django-ranged-response
 django-robots
 django-simple-captcha
+django-sssoon
 django-summernote
 django-taggit
 packaging

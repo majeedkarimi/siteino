@@ -15,7 +15,6 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from comingsoon.views import splashview
 from django.urls import path, include
 
 from django.conf import settings
@@ -24,7 +23,6 @@ from django.contrib.sitemaps.views import sitemap
 from website.sitemaps import StaticViewSitemap
 from blog.sitemaps import BlogSitemap
 from django.contrib.auth import views as auth_views
-from django.conf.urls import url
 from . import views
 sitemaps = {
     'static': StaticViewSitemap,
@@ -32,10 +30,15 @@ sitemaps = {
 }
 
 
+
 urlpatterns = [
+    url(r'^ads\.txt', include('ads_txt.urls')),
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('captcha/', include('captcha.urls')),
-    url(r'^(?!.*admin).*', splashview,name='comingsoon'),
+    url(r'^(?!.*admin|ads\.txt).*', splashview,name='comingsoon'),
+=======
+>>>>>>> parent of 21472e6 (adding coming soon page)
     path('', include('website.urls')),
     path('blog/', include('blog.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
@@ -43,16 +46,14 @@ urlpatterns = [
     path('robots.txt', include('robots.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
     path('summernote/', include('django_summernote.urls')),
+    path('captcha/', include('captcha.urls')),
     path('accounts/',include('accounts.urls')),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='main/password/password_reset_done.html'), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="main/password/password_reset_confirm.html"), name='password_reset_confirm'),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='main/password/password_reset_complete.html'), name='password_reset_complete'), 
     path("password_reset/", views.password_reset_request, name="password_reset"), 
 ]
-handler404 = "siteino.views.page_not_found_view"
 
-if not settings.DEBUG:
+if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    
-
