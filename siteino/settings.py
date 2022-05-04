@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'crispy_forms',
     'comingsoon.apps.ComingsoonConfig',
+     "compressor",
 ]
 
 
@@ -201,3 +202,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # AUTHENTICATION_BACKENDS = ['accounts.views.EmailOrUsernameModelBackend']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
